@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+ext {
+    groovyVersion = '2.3.6'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+
+    compile "org.codehaus.groovy:groovy:${groovyVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    compile 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    testCompile 'junit:junit'
+    testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+    testCompile "org.spockframework:spock-spring:0.7-groovy-2.0"
+    testCompile 'cglib:cglib-nodep:2.2.2'
+}
